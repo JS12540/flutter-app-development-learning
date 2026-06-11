@@ -1,4 +1,278 @@
-Yes — you can create a normal **Dart file** and run it directly, like Python/Go, without building the Flutter app.
+```text
+Dart = Programming Language
+Flutter = Framework / SDK / Ecosystem
+```
+
+Think of it like:
+
+| Language   | Framework   |
+| ---------- | ----------- |
+| JavaScript | React       |
+| TypeScript | Angular     |
+| Python     | Django      |
+| Kotlin     | Android SDK |
+| Dart       | Flutter     |
+
+---
+
+# Dart
+
+Dart is the programming language.
+
+It provides:
+
+```dart
+variables
+functions
+classes
+objects
+inheritance
+interfaces
+async/await
+collections
+generics
+```
+
+Example:
+
+```dart
+class User {
+  String name;
+
+  User(this.name);
+}
+
+void main() {
+  User user = User("Jay");
+  print(user.name);
+}
+```
+
+This is pure Dart.
+
+No Flutter involved.
+
+You can run it with:
+
+```bash
+dart run
+```
+
+---
+
+# Flutter
+
+Flutter is Google's UI framework built using Dart.
+
+Flutter provides:
+
+```text
+Widgets
+Buttons
+TextFields
+Navigation
+Animations
+Themes
+State Management
+Rendering Engine
+Android/iOS Integration
+```
+
+Example:
+
+```dart
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      home: Scaffold(
+        body: Center(
+          child: Text("Hello"),
+        ),
+      ),
+    ),
+  );
+}
+```
+
+This is Flutter.
+
+---
+
+# Relationship
+
+```text
+           Flutter
+        /    |     \
+       /     |      \
+   Widgets  UI   Mobile SDK
+       \     |      /
+        \    |     /
+            Dart
+```
+
+Flutter itself is written largely in Dart, and all Flutter apps are written in Dart.
+
+---
+
+# Another way to think about it
+
+Suppose you're building a banking app.
+
+### Dart handles
+
+```text
+Classes
+Models
+API calls
+Business logic
+Calculations
+Data manipulation
+```
+
+Example:
+
+```dart
+class Account {
+  double balance;
+
+  Account(this.balance);
+
+  void deposit(double amount) {
+    balance += amount;
+  }
+}
+```
+
+### Flutter handles
+
+```text
+Screens
+Buttons
+Forms
+Lists
+Navigation
+Animations
+```
+
+Example:
+
+```dart
+ElevatedButton(
+  onPressed: depositMoney,
+  child: Text("Deposit"),
+)
+```
+
+---
+
+# What actually gets compiled?
+
+Your Flutter code:
+
+```text
+lib/
+```
+
+contains Dart files.
+
+Flutter then compiles Dart into native code.
+
+For Android:
+
+```text
+Dart
+ ↓
+Flutter Engine
+ ↓
+ARM Native Code
+ ↓
+APK
+```
+
+For iPhone:
+
+```text
+Dart
+ ↓
+Flutter Engine
+ ↓
+iOS Native Code
+ ↓
+IPA
+```
+
+---
+
+# What should you learn first?
+
+Since you're coming from a software engineering background, I'd recommend:
+
+### Phase 1 — Pure Dart (1 week)
+
+Learn:
+
+* Variables
+* Functions
+* Classes
+* OOP
+* Lists
+* Maps
+* Null Safety
+* Async/Await
+* Futures
+* JSON Parsing
+* HTTP Calls
+
+Run everything using:
+
+```bash
+dart run bin/learn.dart
+```
+
+No Flutter.
+
+---
+
+### Phase 2 — Flutter Basics
+
+Learn:
+
+* Widget
+* Build method
+* StatelessWidget
+* StatefulWidget
+* Scaffold
+* Column
+* Row
+* Container
+* ListView
+
+---
+
+### Phase 3 — Real Android App
+
+Build:
+
+```text
+Login Screen
+↓
+Dashboard
+↓
+API Call
+↓
+List Data
+↓
+Details Screen
+```
+
+This is where Flutter starts feeling like Android development.
+
+So your statement is correct:
+
+> Dart is the language. Flutter is the framework/ecosystem that uses Dart to build Android, iOS, Web, and Desktop applications.
+
 
 # 1. Create a Dart learning file
 
