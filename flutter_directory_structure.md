@@ -364,3 +364,196 @@ lib/
 android/
 pubspec.yaml
 ```
+
+
+Flutter's main value proposition is:
+
+> **Write most of your app once in `lib/` and deploy it to multiple platforms.**
+
+## How it works
+
+You write your UI and business logic in:
+
+```text
+lib/
+├── main.dart
+├── screens/
+├── widgets/
+├── services/
+└── models/
+```
+
+Example:
+
+```dart
+class LoginScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("Login"),
+      ),
+    );
+  }
+}
+```
+
+This same code can run on:
+
+* Android
+* iOS
+* Web
+* Windows
+* macOS
+* Linux
+
+without rewriting the UI.
+
+---
+
+## What happens during release?
+
+When you run:
+
+```bash
+flutter build apk
+```
+
+Flutter:
+
+1. Reads code from `lib/`
+2. Compiles Dart code
+3. Uses the `android/` project as a wrapper
+4. Produces:
+
+```text
+build/app/outputs/flutter-apk/app-release.apk
+```
+
+For iPhone:
+
+```bash
+flutter build ios
+```
+
+Flutter:
+
+1. Reads same code from `lib/`
+2. Uses the `ios/` project
+3. Produces an iOS app
+
+For web:
+
+```bash
+flutter build web
+```
+
+Produces:
+
+```text
+build/web/
+```
+
+which can be hosted on any web server.
+
+---
+
+## Then why do platform folders exist?
+
+Because every platform has some native configuration.
+
+### Android
+
+```text
+android/
+```
+
+Contains:
+
+* Android permissions
+* Gradle configuration
+* App icon
+* Android SDK settings
+
+Example:
+
+```xml
+<uses-permission android:name="android.permission.CAMERA"/>
+```
+
+---
+
+### iOS
+
+```text
+ios/
+```
+
+Contains:
+
+* Xcode project
+* Apple permissions
+* Signing certificates
+
+Example:
+
+```xml
+NSCameraUsageDescription
+```
+
+---
+
+## Typical split
+
+In many Flutter apps:
+
+```text
+95% Flutter code
+5% Platform-specific code
+```
+
+Most developers spend nearly all their time in:
+
+```text
+lib/
+```
+
+and rarely touch:
+
+```text
+android/
+ios/
+```
+
+unless they need:
+
+* Push notifications
+* Camera
+* Bluetooth
+* Native SDK integrations
+* Deep links
+* Platform-specific permissions
+
+---
+
+## Mental model
+
+Think of Flutter like this:
+
+```text
+            Flutter Code
+                (lib/)
+                    |
+    -----------------------------------
+    |         |         |            |
+ Android     iOS      Web       Desktop
+(android)   (ios)   (web)    (windows/mac/linux)
+```
+
+The `lib/` folder is your actual application.
+
+The platform folders are mostly adapters/wrappers that allow the same app code to run on different operating systems.
+
+So for your learning project, you can safely think:
+
+> "Everything important goes in `lib/`. The `android/` folder only helps package and run my Flutter app on Android." 🚀
